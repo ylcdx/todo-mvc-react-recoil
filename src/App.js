@@ -1,25 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { RecoilRoot } from "recoil";
+import TodoHeader from "./components/TodoHeader/TodoHeader";
+import TodoList from "./components/TodoList/TodoList";
+import TodoFooter from "./components/TodoFooter/TodoFooter";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <RecoilRoot>
+          <section className="todoapp">
+            <TodoHeader />
+            <TodoList />
+            <TodoFooter />
+          </section>
+      </RecoilRoot>
   );
 }
 

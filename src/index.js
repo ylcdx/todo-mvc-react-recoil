@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import 'todomvc-common/base.css';
+import 'todomvc-app-css/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
