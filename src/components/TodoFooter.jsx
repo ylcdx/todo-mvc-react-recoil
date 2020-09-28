@@ -1,8 +1,8 @@
 import React from 'react';
 import { useRecoilValue } from "recoil";
-import { todoListStatsState } from "../TodoList/selectors";
-import TodoFilters from "../TodoFilters/TodoFilters";
-import TodoClearCompleted from "../TodoClearCompleted/TodoClearCompleted";
+import { todoListStatsState } from "../store/selectors";
+import TodoFilters from "./TodoFilters";
+import TodoClearCompleted from "./TodoClearCompleted";
 
 function TodoFooter() {
     const { totalUncompletedNum } = useRecoilValue(todoListStatsState);

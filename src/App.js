@@ -1,8 +1,8 @@
 import React from 'react';
 import { RecoilRoot } from "recoil";
-import TodoHeader from "./components/TodoHeader/TodoHeader";
-import TodoList from "./components/TodoList/TodoList";
-import TodoFooter from "./components/TodoFooter/TodoFooter";
+import TodoHeader from "./components/TodoHeader";
+import TodoList from "./components/TodoList";
+import TodoFooter from "./components/TodoFooter";
 
 function App() {
   return (

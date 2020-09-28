@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { nanoid } from 'nanoid';
 import {useSetRecoilState} from "recoil";
-import {todoListState} from "../TodoList/atoms";
+import {todoListState} from "../store/atoms";
 
 function TodoInput() {
     const [inputValue, setInputValue] = useState('');

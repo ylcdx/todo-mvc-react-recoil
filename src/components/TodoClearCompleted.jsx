@@ -1,6 +1,6 @@
 import React from 'react';
 import {useRecoilState} from "recoil";
-import {todoListState} from "../TodoList/atoms";
+import {todoListState} from "../store/atoms";
 
 function TodoClearCompleted() {
     const [todoList, setTodoList] = useRecoilState(todoListState);
@@ -11,9 +11,7 @@ function TodoClearCompleted() {
     }
 
     return (
-        <React.Fragment>
-            <button className="clear-completed" onClick={deleteItems}>Clear completed</button>
-        </React.Fragment>
+        <button className="clear-completed" onClick={deleteItems}>Clear completed</button>
     );
 }
 

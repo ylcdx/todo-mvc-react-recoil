@@ -1,5 +1,5 @@
 import React from 'react';
-import TodoInput from "../TodoInput/TodoInput";
+import TodoInput from "./TodoInput";
 
 function TodoHeader() {
     return (

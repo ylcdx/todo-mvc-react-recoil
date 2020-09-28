@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useRecoilState} from "recoil";
-import {todoListState} from "../TodoList/atoms";
+import {todoListState} from "../store/atoms";
 
 function TodoToggleAll() {
     const [completeValue, setCompleteValue] = useState(false);
