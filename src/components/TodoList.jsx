@@ -1,22 +1,22 @@
 import React from 'react';
-import { useRecoilValue } from "recoil";
+import {useRecoilValue} from "recoil";
 import TodoItem from "./TodoItem";
 import TodoToggleAll from "./TodoToggleAll";
-import { filteredTodoListState } from "../store/selectors";
+import {filteredTodoListSelector} from "../store";
 
 function TodoList() {
-    const todoList = useRecoilValue(filteredTodoListState);
+  const todoList = useRecoilValue(filteredTodoListSelector);
 
-    return (
-        <section className="main">
-            <TodoToggleAll />
-            <ul className="todo-list">
-                {todoList.map((todoItem) => (
-                    <TodoItem key={todoItem.id} item={todoItem} />
-                ))}
-            </ul>
-        </section>
-    );
+  return (
+    <section className="main">
+      <TodoToggleAll/>
+      <ul className="todo-list">
+        {todoList.map((todoItem) => (
+          <TodoItem key={todoItem.id} item={todoItem}/>
+        ))}
+      </ul>
+    </section>
+  );
 }
 
 export default TodoList;

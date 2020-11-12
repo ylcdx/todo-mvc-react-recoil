@@ -1,37 +1,28 @@
 import React, {useState} from 'react';
-import { nanoid } from 'nanoid';
-import {useSetRecoilState} from "recoil";
-import {todoListState} from "../store/atoms";
+import {useAddTodoHook} from "../store";
 
 function TodoInput() {
-    const [inputValue, setInputValue] = useState('');
-    const setTodoList = useSetRecoilState(todoListState);
-    const ENTER_KEY = 13;
+  const [inputValue, setInputValue] = useState('');
+  const ENTER_KEY = 13;
+  const addItem = useAddTodoHook();
 
-    const addItem = () => {
-        setTodoList((oldTodoList) => [
-            ...oldTodoList,
-            {
-                id: nanoid(),
-                text: inputValue,
-                isComplete: false,
-            },
-        ]);
-        setInputValue('');
-    };
+  const onChange = ({target: {value}}) => {
+    setInputValue(value);
+  };
 
-    const onChange = ({target: {value}}) => {
-        setInputValue(value);
-    };
-
-    const handleKeyDown = (event) => {
-        if (event.which === ENTER_KEY) {
-            addItem();
-        }
+  const handleKeyDown = (event) => {
+    if (event.which === ENTER_KEY && '' !== inputValue) {
+      addItem(inputValue);
+      setInputValue('');
     }
-    return (
-        <input className="new-todo" placeholder="What needs to be done?" autoFocus value={inputValue} onChange={onChange} onKeyDown={handleKeyDown} />
-    );
+  }
+
+  return (
+    <input className="new-todo" placeholder="What needs to be done?" autoFocus
+           value={inputValue}
+           onChange={onChange}
+           onKeyDown={handleKeyDown}/>
+  );
 }
 
 export default TodoInput;

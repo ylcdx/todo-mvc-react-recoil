@@ -1,26 +1,21 @@
 import React, {useState} from 'react';
-import {useRecoilState} from "recoil";
-import {todoListState} from "../store/atoms";
+import {useToggleAllHook} from "../store";
 
 function TodoToggleAll() {
-    const [completeValue, setCompleteValue] = useState(false);
-    const [todoList, setTodoList] = useRecoilState(todoListState);
+  const [completeValue, setCompleteValue] = useState(false);
+  const toggleAll = useToggleAllHook();
 
-    const toggleAll = () => {
-        const newList = todoList.map(item => {
-            return { ...item, isComplete: !completeValue }
-        });
+  const handleChange = () => {
+    toggleAll(!completeValue)
+    setCompleteValue(!completeValue);
+  }
 
-        setCompleteValue(!completeValue);
-        setTodoList(newList);
-    }
-
-    return (
-        <React.Fragment>
-            <input id="toggle-all" className="toggle-all" type="checkbox" onChange={toggleAll} />
-            <label htmlFor="toggle-all">Mark all as complete</label>
-        </React.Fragment>
-    );
+  return (
+    <React.Fragment>
+      <input id="toggle-all" className="toggle-all" type="checkbox" onChange={handleChange}/>
+      <label htmlFor="toggle-all">Mark all as complete</label>
+    </React.Fragment>
+  );
 }
 
 export default TodoToggleAll;

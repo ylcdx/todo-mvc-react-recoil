@@ -1,11 +1,11 @@
 import { selector } from "recoil";
-import { todoListFilterState, todoListState } from "./atoms";
+import { todoListFilterAtom, todoListAtom } from "./atoms";
 
-const filteredTodoListState = selector({
-    key: 'filteredTodoListState',
+const filteredTodoListSelector = selector({
+    key: 'filteredTodoListSelector',
     get: ({get}) => {
-        const filter = get(todoListFilterState);
-        const list = get(todoListState);
+        const filter = get(todoListFilterAtom);
+        const list = get(todoListAtom);
 
         switch (filter) {
             case 'COMPLETED':
@@ -18,10 +18,10 @@ const filteredTodoListState = selector({
     },
 });
 
-const todoListStatsState = selector({
-    key: 'todoListStatsState',
+const todoListStatsSelector = selector({
+    key: 'todoListStatsSelector',
     get: ({get}) => {
-        const todoList = get(todoListState);
+        const todoList = get(todoListAtom);
         const totalNum = todoList.length;
         const totalCompletedNum = todoList.filter((item) => item.isComplete).length;
         const totalUncompletedNum = totalNum - totalCompletedNum;
@@ -34,4 +34,4 @@ const todoListStatsState = selector({
     },
 });
 
-export { filteredTodoListState, todoListStatsState }
+export { filteredTodoListSelector, todoListStatsSelector }
